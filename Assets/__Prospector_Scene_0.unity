@@ -343,7 +343,7 @@ MonoBehaviour:
   cardFront: {fileID: 21300000, guid: 873a7658b7ec742228520c7b15510f4d, type: 3}
   cardFrontGold: {fileID: 21300000, guid: 944dc539459fe4109b973bd4c97f68ee, type: 3}
   prefabCard: {fileID: 0}
-  prefabSprite: {fileID: 0}
+  prefabSprite: {fileID: 1000014090761352, guid: 30a6ba41f0d264815a76b64a60ee0b62, type: 3}
   xmlr:
     xmlText: 
   cardNames: []
