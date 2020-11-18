@@ -35,18 +35,19 @@ public class Deck : MonoBehaviour {
  
   // InitDeck is called by Prospector when it is ready
   public void InitDeck(string deckXMLText) {
-      // This creates an anchor for all the Card GameObjects in the Hierarchy
-      if (GameObject.Find("_Deck") == null) {
-          GameObject anchorGO = new GameObject("_Deck");
-          deckAnchor = anchorGO.transform;
-      }
+    // This creates an anchor for all the Card GameObjects in the Hierarchy
+    if (GameObject.Find("_Deck") == null) {
+        GameObject anchorGO = new GameObject("_Deck");
+        deckAnchor = anchorGO.transform;
+    }
 
-      // Initialize the Dictionary of SuitSprites with necessary Sprites
-      dictSuits = new Dictionary<string, Sprite>() {
-        { "C", suitClub },
-        { "D", suitDiamond },
-        { "H", suitHeart },
-        { "S", suitSpade } };
+    // Initialize the Dictionary of SuitSprites with necessary Sprites
+    dictSuits = new Dictionary<string, Sprite>() {
+      { "C", suitClub },
+      { "D", suitDiamond },
+      { "H", suitHeart },
+      { "S", suitSpade } 
+    };
 
     ReadDeck(deckXMLText); // This is the preexisting line from earlier
 
