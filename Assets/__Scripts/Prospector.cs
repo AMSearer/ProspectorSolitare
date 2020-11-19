@@ -34,6 +34,7 @@ public class Prospector : MonoBehaviour {
  
     void Start () {
         Scoreboard.S.score = ScoreManager.SCORE;
+        
         deck = GetComponent<Deck>(); // Get the Deck
         deck.InitDeck(deckXML.text); // Pass DeckXML to it
         Deck.Shuffle(ref deck.cards); // This shuffles the deck by reference 

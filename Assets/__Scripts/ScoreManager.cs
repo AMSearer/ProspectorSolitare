@@ -93,7 +93,7 @@ public class ScoreManager : MonoBehaviour
 
             default:
                 print ("score: "+score+" scoreRun:"+scoreRun+" chain:"+chain);
-                break;
+                break; 
         }
     }
 
