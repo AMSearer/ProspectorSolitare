@@ -109,7 +109,14 @@ public class Prospector : MonoBehaviour {
             cp = Draw(); // Pull a card from the top (beginning) of the draw Pile
 
             // Make Gold
-            cp = deck.MakeBackGold(cp);
+            if (true) {
+                cp = deck.MakeBackGold(cp);
+                cp = deck.MakeFrontGold(cp);
+                cp.isGold = true;
+                cp.DisableCardFront();
+
+            }
+            
 
             cp.faceUp = tSD.faceUp;  // Set its faceUp to the value in SlotDef
             cp.transform.parent = layoutAnchor; // Make its parent layoutAnchor
@@ -128,7 +135,7 @@ public class Prospector : MonoBehaviour {
             // CardProspectors in the tableau have the state CardState.tableau
             cp.SetSortingLayerName(tSD.layerName); // Set the sorting layers
 
-            cp.SetSortOrder(2);
+            cp.SetSortOrder(0);
             
             tableau.Add(cp); // Add this CardProspector to the List<> tableau    
         }

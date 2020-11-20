@@ -321,7 +321,19 @@ public class Deck : MonoBehaviour {
     _tGO.transform.localPosition = Vector3.zero;
     // This is a higher sortingOrder than anything else
     _tSR.sortingOrder = 2;
-    _tGO.name = "back";
+    _tGO.name = "goldBack";
+    cp.back = _tGO;
+    return cp;
+  }
+
+    public CardProspector MakeFrontGold(CardProspector cp) {
+    _tGO = Instantiate( prefabSprite ) as GameObject;
+    _tSR = _tGO.GetComponent<SpriteRenderer>();
+    _tSR.sprite = cardFrontGold;
+    _tGO.transform.SetParent( cp.transform );
+    _tGO.transform.localPosition = Vector3.zero;
+    _tSR.sortingOrder = 0;
+    _tGO.name = "goldFront";
     cp.back = _tGO;
     return cp;
   }

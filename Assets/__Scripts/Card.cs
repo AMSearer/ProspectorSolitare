@@ -34,6 +34,10 @@ public class Card : MonoBehaviour {
         }
     }
 
+    public void DisableCardFront() {
+        this.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
         // Sets the sortingLayerName on all SpriteRenderer Components
     public void SetSortingLayerName(string tSLN) {
         PopulateSpriteRenderers();
@@ -59,12 +63,14 @@ public class Card : MonoBehaviour {
             // switch based on the names
             switch (tSR.gameObject.name) {
                 case "back" : // if the name is "back"
+                case "goldBack" : // if the name is "goldBack"
                     // Set it to the highest layer to cover the other sprites
                     tSR.sortingOrder = sOrd+2;
                     break;
 
 
                 case "face":  // if the name is "face"
+                case "goldFront": // if the name is "goldFront"
                 default:      //  or if it's anything else
                     // Set it to the middle layer to be above the background          
                     tSR.sortingOrder = sOrd+1;
