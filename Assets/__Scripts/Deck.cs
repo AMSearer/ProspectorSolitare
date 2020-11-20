@@ -313,7 +313,7 @@ public class Deck : MonoBehaviour {
   card.faceUp = startFaceUp; // Use the property faceUp of Card
   }
 
-  public CardProspector MakeGold(CardProspector cp) {
+  public CardProspector MakeBackGold(CardProspector cp) {
     _tGO = Instantiate( prefabSprite ) as GameObject;
     _tSR = _tGO.GetComponent<SpriteRenderer>();
     _tSR.sprite = cardBackGold;
@@ -321,7 +321,7 @@ public class Deck : MonoBehaviour {
     _tGO.transform.localPosition = Vector3.zero;
     // This is a higher sortingOrder than anything else
     _tSR.sortingOrder = 2;
-    _tGO.name = "gold_back";
+    _tGO.name = "back";
     cp.back = _tGO;
     return cp;
   }
