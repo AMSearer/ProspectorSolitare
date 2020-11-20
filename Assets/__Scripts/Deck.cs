@@ -313,6 +313,19 @@ public class Deck : MonoBehaviour {
   card.faceUp = startFaceUp; // Use the property faceUp of Card
   }
 
+  public CardProspector MakeGold(CardProspector cp) {
+    _tGO = Instantiate( prefabSprite ) as GameObject;
+    _tSR = _tGO.GetComponent<SpriteRenderer>();
+    _tSR.sprite = cardBackGold;
+    _tGO.transform.SetParent( cp.transform );
+    _tGO.transform.localPosition = Vector3.zero;
+    // This is a higher sortingOrder than anything else
+    _tSR.sortingOrder = 2;
+    _tGO.name = "gold_back";
+    cp.back = _tGO;
+    return cp;
+  }
+
   static public void Shuffle(ref List<Card> oCards) {                    // a
     // Create a temporary List to hold the new shuffle order
     List<Card> tCards = new List<Card>();

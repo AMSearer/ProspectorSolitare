@@ -21,6 +21,8 @@ public class CardProspector : Card { // Make sure CardProspector extends Card
   // The SlotDef class stores information pulled in from the LayoutXML <slot>
   public SlotDef                slotDef;
 
+  public bool isGold = false;
+
   // This allows the card to react to being clicked
   override public void OnMouseUpAsButton() {
     // Call the CardClicked method on the Prospector singleton

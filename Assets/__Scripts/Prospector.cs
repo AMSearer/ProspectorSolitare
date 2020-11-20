@@ -107,6 +107,10 @@ public class Prospector : MonoBehaviour {
         foreach (SlotDef tSD in layout.slotDefs) {
             // ^ Iterate through all the SlotDefs in the layout.slotDefs as tSD
             cp = Draw(); // Pull a card from the top (beginning) of the draw Pile
+
+            // Make Gold
+            cp = deck.MakeGold(cp);
+            
             cp.faceUp = tSD.faceUp;  // Set its faceUp to the value in SlotDef
             cp.transform.parent = layoutAnchor; // Make its parent layoutAnchor
             // This replaces the previous parent: deck.deckAnchor, which
