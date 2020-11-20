@@ -15,6 +15,7 @@ public class Card : MonoBehaviour {
     public List<GameObject> pipGOs = new List<GameObject>();
 
     public GameObject      back; // The GameObject of the back of the card
+    public GameObject      front; // The GameObject of the front of the card
 
     public CardDefinition  def; // Parsed from DeckXML.xml
 
@@ -67,10 +68,13 @@ public class Card : MonoBehaviour {
                     // Set it to the highest layer to cover the other sprites
                     tSR.sortingOrder = sOrd+2;
                     break;
-
+                
+                case "goldFront": // if the name is "goldFront"
+                    tSR.sortingOrder = sOrd+0;
+                    break;
 
                 case "face":  // if the name is "face"
-                case "goldFront": // if the name is "goldFront"
+                
                 default:      //  or if it's anything else
                     // Set it to the middle layer to be above the background          
                     tSR.sortingOrder = sOrd+1;

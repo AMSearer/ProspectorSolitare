@@ -334,7 +334,7 @@ public class Deck : MonoBehaviour {
     _tGO.transform.localPosition = Vector3.zero;
     _tSR.sortingOrder = 0;
     _tGO.name = "goldFront";
-    cp.back = _tGO;
+    cp.front = _tGO;
     return cp;
   }
 
