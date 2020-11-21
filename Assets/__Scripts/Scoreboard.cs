@@ -50,17 +50,21 @@ public class Scoreboard : MonoBehaviour
 
     // When called by SendMessage, this adds the fs.score to this.score
     public void FSCallback(FloatingScore fs) {
-        score += fs.score;
+        // score += (fs.score * fs.multiplier);
+        GameObject cam = GameObject.Find("_MainCamera");
+        ScoreManager sm = cam.GetComponent<ScoreManager>();
+        score = sm.score;
     }
 
         // This will Instantiate a new FloatingScore GameObject and initialize it.
     // It also returns a pointer to the FloatingScore created so that the
     //  calling function can do more with it (like set fontSizes, and so on)
-    public FloatingScore CreateFloatingScore(int amt, List<Vector2> pts) {
+    public FloatingScore CreateFloatingScore(int amt, List<Vector2> pts, int mult) {
         GameObject go = Instantiate <GameObject> (prefabFloatingScore);
         go.transform.SetParent( canvasTrans );
         FloatingScore fs = go.GetComponent<FloatingScore>();
         fs.score = amt;
+        fs.multiplier = mult;
         fs.reportFinishTo = this.gameObject; // Set fs to call back to this
         fs.Init(pts);
         return(fs);

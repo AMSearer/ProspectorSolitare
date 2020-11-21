@@ -20,6 +20,7 @@ public class FloatingScore : MonoBehaviour {
     [SerializeField]
     protected int       _score = 0;
     public string       scoreString;
+    protected int       _mult = 1;
 
 
     // The score property sets both _score and scoreString
@@ -29,10 +30,19 @@ public class FloatingScore : MonoBehaviour {
         }
         set {
              _score = value;
-             scoreString = _score.ToString("N0");// "N0" adds commas to the num
+             scoreString = (_score).ToString("N0");// "N0" adds commas to the num
              // Search "C# Standard Numeric Format Strings" for ToString formats
             GetComponent<Text>().text = scoreString;
       }
+    }
+
+    public int multiplier {
+        get {
+            return(_mult);
+        }
+        set {
+            _mult = value;
+        }
     }
 
     public List<Vector2>  bezierPts; // Bézier points for movement
@@ -75,7 +85,11 @@ public class FloatingScore : MonoBehaviour {
     public void FSCallback(FloatingScore fs) {
         // When this callback is called by SendMessage,
         //  add the score from the calling FloatingScore
-        score += fs.score;
+        score = ((score + fs.score / fs.multiplier) * multiplier);
+
+        GameObject cam = GameObject.Find("_MainCamera");
+        ScoreManager sm = cam.GetComponent<ScoreManager>();
+        score = sm.scoreRun * sm.runMult;
     }
    
     // Update is called once per frame

@@ -284,8 +284,17 @@ public class Prospector : MonoBehaviour {
                 tableau.Remove(cd); // Remove it from the tableau List
                 MoveToTarget(cd);  // Make it the target card
                 SetTableauFaces(); // Update tableau card face-ups
-                ScoreManager.EVENT(eScoreEvent.mine);
-                FloatingScoreHandler(eScoreEvent.mine);
+                if (cd.isGold) {
+                    ScoreManager.EVENT(eScoreEvent.mineGold);
+                    FloatingScoreHandler(eScoreEvent.mineGold);
+                }
+                else {
+                    ScoreManager.EVENT(eScoreEvent.mine);
+                    FloatingScoreHandler(eScoreEvent.mine);
+                }
+                
+                
+                
                 break;
         }
         // Check to see whether the game is over or not
@@ -410,7 +419,7 @@ public class Prospector : MonoBehaviour {
                 fsPts.Add( p0 );
                 fsPts.Add( fsPosMid );
                 fsPts.Add( fsPosRun );
-                fs = Scoreboard.S.CreateFloatingScore(ScoreManager.CHAIN, fsPts);
+                fs = Scoreboard.S.CreateFloatingScore((ScoreManager.CHAIN), fsPts, 1);
                 fs.fontSizes = new List<float>(new float[] {4,50,28});
                 if (fsRun == null) {
                     fsRun = fs;
@@ -418,6 +427,30 @@ public class Prospector : MonoBehaviour {
                 } 
                 else {
                     fs.reportFinishTo = fsRun.gameObject;
+                }
+                break;
+
+            case eScoreEvent.mineGold:
+                Debug.Log("GOLD");
+                // print("gold");
+            // Create a FloatingScore for this score
+                FloatingScore fss;
+                // Move it from the mousePosition to fsPosRun
+                Vector2 p10 = Input.mousePosition;
+                p10.x /= Screen.width;
+                p10.y /= Screen.height;
+                fsPts = new List<Vector2>();
+                fsPts.Add( p10 );
+                fsPts.Add( fsPosMid );
+                fsPts.Add( fsPosRun );
+                fss = Scoreboard.S.CreateFloatingScore((ScoreManager.CHAIN * 2), fsPts, 2);
+                fss.fontSizes = new List<float>(new float[] {4,50,28});
+                if (fsRun == null) {
+                    fsRun = fss;
+                    fsRun.reportFinishTo = null;
+                } 
+                else {
+                    fss.reportFinishTo = fsRun.gameObject;
                 }
                 break;
             }

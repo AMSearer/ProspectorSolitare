@@ -23,6 +23,7 @@ public class ScoreManager : MonoBehaviour
     public int            chain = 0;
     public int            scoreRun = 0;
     public int            score = 0;
+    public int            runMult = 1;
 
     void Awake() {
         if (S == null) {                                        // c
@@ -57,12 +58,17 @@ public class ScoreManager : MonoBehaviour
             case eScoreEvent.gameWin:  // Won the round
             case eScoreEvent.gameLoss: // Lost the round
                 chain = 0;             // resets the score chain
-                score += scoreRun;     // add scoreRun to total score
+                score += (scoreRun * runMult); //* runMult);     // add scoreRun to total score
                 scoreRun = 0;          // reset scoreRun
+                runMult = 1; // reset
                 break;
 
 
-
+            case eScoreEvent.mineGold:
+                chain++;              // increase the score chain
+                scoreRun += chain;    // add score for this card to run
+                runMult *= 2;
+                break;
 
             case eScoreEvent.mine:    // Remove a mine card
                 chain++;              // increase the score chain
@@ -100,6 +106,7 @@ public class ScoreManager : MonoBehaviour
     static public int CHAIN { get { return S.chain; } }             // e
     static public int SCORE { get { return S.score; } }
     static public int SCORE_RUN { get { return S.scoreRun; } }
+    static public int RUN_MULT { get { return S.runMult; } }
     
 
 }
