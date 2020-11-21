@@ -19,6 +19,7 @@ public class Prospector : MonoBehaviour {
     public Vector2                 fsPosEnd = new Vector2( 0.5f, 0.95f );
     public float                  reloadDelay = 2f;// 2 sec delay between rounds
     public Text                gameOverText, roundResultText, highScoreText;
+    public float                chanceForGold = 0.10f;
  
     [Header("Set Dynamically")]
     public Deck                    deck;
@@ -109,12 +110,11 @@ public class Prospector : MonoBehaviour {
             cp = Draw(); // Pull a card from the top (beginning) of the draw Pile
 
             // Make Gold
-            if (true) {
+            if (Random.Range(0.0f, 1.0f) < chanceForGold) {
                 cp = deck.MakeBackGold(cp);
                 cp = deck.MakeFrontGold(cp);
                 cp.isGold = true;
                 cp.DisableCardFront();
-
             }
             
 
