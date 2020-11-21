@@ -584,6 +584,7 @@ MonoBehaviour:
   gameOverText: {fileID: 0}
   roundResultText: {fileID: 0}
   highScoreText: {fileID: 0}
+  chanceForGold: 0.35
   deck: {fileID: 0}
   layout: {fileID: 0}
   drawPile: []
@@ -767,6 +768,7 @@ MonoBehaviour:
   chain: 0
   scoreRun: 0
   score: 0
+  runMult: 1
 --- !u!1 &853190058
 GameObject:
   m_ObjectHideFlags: 0

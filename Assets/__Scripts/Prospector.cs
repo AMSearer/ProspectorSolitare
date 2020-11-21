@@ -431,7 +431,7 @@ public class Prospector : MonoBehaviour {
                 break;
 
             case eScoreEvent.mineGold:
-                Debug.Log("GOLD");
+                // Debug.Log("GOLD");
                 // print("gold");
             // Create a FloatingScore for this score
                 FloatingScore fss;
